@@ -13,8 +13,8 @@ services:
    - 3306
   volumes:
    - node1-data:/var/lib/mysql
-   - /Users/babken/Development/Training/percona-8/cert:/cert
-   - /Users/babken/Development/Training/percona-8/config:/etc/percona-xtradb-cluster.conf.d
+   - /root/percona-test/cert:/cert
+   - /root/percona-test/config:/etc/percona-xtradb-cluster.conf.d
   environment:
    - CLUSTER_NAME=mysql-cluster-test
    - MYSQL_ROOT_PASSWORD=a123456
@@ -31,8 +31,8 @@ services:
 #    - 3306
 #   volumes:
 #    - node2-data:/var/lib/mysql
-#    - /Users/babken/Development/Training/percona-8/cert:/cert
-#    - /Users/babken/Development/Training/percona-8/config:/etc/percona-xtradb-cluster.conf.d
+#    - /root/percona-test/cert:/cert
+#    - /root/percona-test/config:/etc/percona-xtradb-cluster.conf.d
 #   environment:
 #    - CLUSTER_NAME=mysql-cluster-test
 #    - MYSQL_ROOT_PASSWORD=a123456
@@ -52,8 +52,8 @@ services:
 #    - 3306
 #   volumes:
 #    - node3-data:/var/lib/mysql
-#    - /Users/babken/Development/Training/percona-8/cert:/cert
-#    - /Users/babken/Development/Training/percona-8/config:/etc/percona-xtradb-cluster.conf.d
+#    - /root/percona-test/cert:/cert
+#    - /root/percona-test/config:/etc/percona-xtradb-cluster.conf.d
 #   environment:
 #    - CLUSTER_NAME=mysql-cluster-test
 #    - MYSQL_ROOT_PASSWORD=a123456
