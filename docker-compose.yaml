@@ -19,26 +19,26 @@ services:
    - CLUSTER_NAME=mysql-cluster-test
    - MYSQL_ROOT_PASSWORD=a123456
   
-#  mysql-node-2:
-#   image: percona/percona-xtradb-cluster:8.0
-#   container_name: mysql-node-2
-#   hostname: mysql-node-2
-#   privileged: true
-#   networks:
-#    cluster-network:
-#     ipv4_address: 172.18.0.3
-#   expose:
-#    - 3306
-#   volumes:
-#    - node2-data:/var/lib/mysql
-#    - /root/percona-test/cert:/cert
-#    - /root/percona-test/config:/etc/percona-xtradb-cluster.conf.d
-#   environment:
-#    - CLUSTER_NAME=mysql-cluster-test
-#    - MYSQL_ROOT_PASSWORD=a123456
-#    - CLUSTER_JOIN=mysql-node-1
-#   depends_on:
-#    - mysql-node-1
+ mysql-node-2:
+  image: percona/percona-xtradb-cluster:8.0
+  container_name: mysql-node-2
+  hostname: mysql-node-2
+  privileged: true
+  networks:
+   cluster-network:
+    ipv4_address: 172.18.0.3
+  expose:
+   - 3306
+  volumes:
+   - node2-data:/var/lib/mysql
+   - /root/percona-test/cert:/cert
+   - /root/percona-test/config:/etc/percona-xtradb-cluster.conf.d
+  environment:
+   - CLUSTER_NAME=mysql-cluster-test
+   - MYSQL_ROOT_PASSWORD=a123456
+   - CLUSTER_JOIN=mysql-node-1
+  depends_on:
+   - mysql-node-1
 
 #  mysql-node-3:
 #   image: percona/percona-xtradb-cluster:8.0
