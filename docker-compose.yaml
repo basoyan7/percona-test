@@ -1,0 +1,76 @@
+version: '3'
+
+services:
+ mysql-node-1:
+  image: percona/percona-xtradb-cluster:8.0
+  container_name: mysql-node-1
+  hostname: mysql-node-1
+  privileged: true
+  networks:
+   cluster-network:
+    ipv4_address: 172.18.0.2
+  expose:
+   - 3306
+  volumes:
+   - node1-data:/var/lib/mysql
+   - /Users/babken/Development/Training/percona-8/cert:/cert
+   - /Users/babken/Development/Training/percona-8/config:/etc/percona-xtradb-cluster.conf.d
+  environment:
+   - CLUSTER_NAME=mysql-cluster-test
+   - MYSQL_ROOT_PASSWORD=a123456
+  
+#  mysql-node-2:
+#   image: percona/percona-xtradb-cluster:8.0
+#   container_name: mysql-node-2
+#   hostname: mysql-node-2
+#   privileged: true
+#   networks:
+#    cluster-network:
+#     ipv4_address: 172.18.0.3
+#   expose:
+#    - 3306
+#   volumes:
+#    - node2-data:/var/lib/mysql
+#    - /Users/babken/Development/Training/percona-8/cert:/cert
+#    - /Users/babken/Development/Training/percona-8/config:/etc/percona-xtradb-cluster.conf.d
+#   environment:
+#    - CLUSTER_NAME=mysql-cluster-test
+#    - MYSQL_ROOT_PASSWORD=a123456
+#    - CLUSTER_JOIN=mysql-node-1
+#   depends_on:
+#    - mysql-node-1
+
+#  mysql-node-3:
+#   image: percona/percona-xtradb-cluster:8.0
+#   container_name: mysql-node-3
+#   hostname: mysql-node-3
+#   privileged: true
+#   networks:
+#    cluster-network:
+#     ipv4_address: 172.18.0.4
+#   expose:
+#    - 3306
+#   volumes:
+#    - node3-data:/var/lib/mysql
+#    - /Users/babken/Development/Training/percona-8/cert:/cert
+#    - /Users/babken/Development/Training/percona-8/config:/etc/percona-xtradb-cluster.conf.d
+#   environment:
+#    - CLUSTER_NAME=mysql-cluster-test
+#    - MYSQL_ROOT_PASSWORD=a123456
+#    - CLUSTER_JOIN=mysql-node-1
+#   depends_on:
+#    - mysql-node-1
+#    - mysql-node-2
+
+volumes:
+    node1-data:
+    node2-data:
+    node3-data:
+
+networks:
+ cluster-network:
+  driver: bridge
+  ipam:
+    driver: default
+    config:
+    - subnet: 172.18.0.0/24

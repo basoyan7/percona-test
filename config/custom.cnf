@@ -1,0 +1,17 @@
+[mysqld]
+wsrep_provider_options="socket.ssl_key=/cert/server-key.pem;socket.ssl_cert=/cert/server-cert.pem;socket.ssl_ca=/cert/ca.pem"
+ssl-ca = /cert/ca.pem
+ssl-cert = /cert/server-cert.pem
+ssl-key = /cert/server-key.pem
+
+[client]
+ssl-ca = /cert/ca.pem
+ssl-cert = /cert/client-cert.pem
+ssl-key = /cert/client-key.pem
+
+[sst]
+encrypt = 4
+ssl-ca = /cert/ca.pem
+ssl-cert = /cert/server-cert.pem
+ssl-key = /cert/server-key.pem
+
