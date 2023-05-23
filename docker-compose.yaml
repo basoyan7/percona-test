@@ -37,7 +37,7 @@ services:
    - CLUSTER_NAME=mysql-cluster-test
    - MYSQL_ROOT_PASSWORD=a123456
    - CLUSTER_JOIN=mysql-node-1
-  entrypoint: ["sleep", "60", ";", "/entrypoint.sh"]
+  entrypoint: ["sleep 60; /entrypoint.sh"]
   command: mysqld
   depends_on:
    - mysql-node-1
@@ -60,7 +60,7 @@ services:
    - CLUSTER_NAME=mysql-cluster-test
    - MYSQL_ROOT_PASSWORD=a123456
    - CLUSTER_JOIN=mysql-node-1
-  entrypoint: ["sleep", "60", ";", "/entrypoint.sh"]
+  entrypoint: ["sleep 60; /entrypoint.sh"]
   command: mysqld
   depends_on:
    - mysql-node-1
